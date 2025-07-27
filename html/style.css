@@ -1,0 +1,605 @@
+/* ==== RESET & BASIS ==== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background: transparent;
+  color: #f0f0f0;
+  overflow: hidden;
+}
+
+body.menu-open {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* ==== OVERLAY ==== */
+#main {
+  position: fixed;
+  inset: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: rgba(10, 10, 10, 0.75);
+  backdrop-filter: blur(6px);
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* ==== CONTAINER STYLING ==== */
+.container {
+  width: 95vw;
+  max-width: 1400px;          
+  max-height: 90vh;
+  background: linear-gradient(160deg, #1f1f1f, #121212);
+  border-radius: 30px;
+  padding: 50px 60px;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.95);
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  overflow-y: auto;
+
+  scrollbar-width: thin;
+  scrollbar-color: #ff4b2b transparent;
+}
+
+.container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background-color: #ff4b2b;
+  border-radius: 10px;
+  border: 2px solid transparent;
+}
+
+.container > h1 {
+  font-family: 'Poppins', 'Montserrat', 'Space Grotesk', sans-serif;
+  font-size: 56px; 
+  font-weight: 900;
+  text-align: center;
+  letter-spacing: 2px;
+  margin: 40px 0 50px 0;
+  padding: 0 10px;
+
+ 
+  background: linear-gradient(90deg, #ff4b2b, #ff7723, #ffaf39);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+ 
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.3);
+
+  
+}
+
+
+
+@keyframes pulseGlow {
+  0%, 100% {
+    text-shadow:
+      0 2px 6px rgba(255, 75, 43, 0.8),
+      0 4px 10px rgba(255, 118, 35, 0.6),
+      0 8px 30px rgba(255, 175, 57, 0.4);
+  }
+  50% {
+    text-shadow:
+      0 2px 10px rgba(255, 75, 43, 1),
+      0 6px 20px rgba(255, 118, 35, 0.9),
+      0 12px 40px rgba(255, 175, 57, 0.7);
+  }
+}
+
+
+/* ==== BUSINESS LIST ==== */
+#businesses {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* ==== BUSINESS CARD ==== */
+.business-card {
+  display: flex;
+  gap: 24px;
+  background: linear-gradient(145deg, #262626, #1a1a1a);
+  border: 1.5px solid transparent;
+  padding: 24px;
+  border-radius: 20px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.5);
+  transition: all 0.25s ease;
+  user-select: none;
+}
+
+.business-card .left-col {
+  flex: 0 0 220px; 
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.business-card .right-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column; 
+  gap: 12px;
+}
+
+
+.upgrade-action {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;         
+}
+
+
+.buy-action {
+  display: flex;
+  justify-content: flex-end; 
+  margin-top: auto;         
+}
+
+/* ==== Business description ==== */
+
+.biz-description {
+  font-size: 0.9rem;
+  color: #bbb;
+  line-height: 1.4;
+  max-width: 100%;   
+  word-wrap: break-word;
+  white-space: normal;
+  margin-top: 4px;
+}
+
+/* ==== Hover effect business card ==== */
+.business-card:hover {
+  transform: translateY(-2px);
+  border-color: #ff4b2b;
+  background: linear-gradient(145deg, #2d2d2d, #1c1c1c);
+}
+
+/* ==== BUSINESS IMAGE ==== */
+.business-image {
+  width: 160px;           
+  height: 120px;
+  border-radius: 16px;
+  background: #333;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+  flex-shrink: 0;
+  margin-bottom: 12px;    
+}
+
+/* ==== INFO SECTIE ==== */
+.business-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.business-info h3 {
+  font-size: 1.8em;
+  font-weight: 800;
+  color: #fff;
+}
+
+.business-info p {
+  font-size: 1em;
+  color: #bbb;
+  line-height: 1.4;
+}
+
+
+/* ==== ACTIEKNOPPEN ==== */
+.business-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.business-actions button {
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 700;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.2s ease;
+  white-space: nowrap;
+  min-width: 70px;
+  max-width: 180px;
+  width: auto;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  user-select: none;
+}
+
+/* ===== general button styling ===== */
+button {
+  font-family: 'Space Grotesk', Arial, sans-serif;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  user-select: none;
+  outline-offset: 3px;
+  outline-color: transparent;
+  font-size: 0.85rem;          
+  padding: 5px 12px;           
+  min-width: 70px;             
+  max-width: 180px;
+  width: auto;
+  display: inline-block;
+  text-align: center;
+}
+
+button:focus {
+  outline-style: solid;
+  outline-color: #ff8f00;
+  outline-width: 3px;
+}
+
+
+   .buy-wrapper {
+    display: flex;
+    flex-direction: column; 
+    gap: 8px;               
+  }
+  
+ 
+  .btn-buy {
+    background: #f9a825;
+    color: #212121;
+    border: 1.5px solid #fbc02d;
+    box-shadow: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  
+    align-self: flex-end;  
+    white-space: nowrap;   
+    min-width: auto;       
+    padding: 5px 12px;
+  }
+  
+  .btn-buy:hover:not(:disabled) {
+    background: #fff176;
+    border-color: #f9a825;
+    transform: translateY(-1.5px);
+  }
+  
+/* ==========================
+   Upgrade knop (algemeen)
+   ========================== */
+.btn-upgrade {
+  background: #212121;
+  color: #f9a825;
+  border: 1.5px solid #f9a825;
+  box-shadow: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.btn-upgrade:hover:not(:disabled) {
+  background: #2e2e2e;
+  border-color: #ffca28;
+  color: #ffca28;
+  transform: translateY(-1.5px);
+}
+
+/* ==========================
+   Disabled state voor alle knoppen
+   ========================== */
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background: #3a3a3a !important;
+  color: #999 !important;
+  border-color: #666 !important;
+  transform: none !important;
+}
+
+/* ==========================
+   Wrapper voor upgrade knop (rechts onderin)
+   ========================== */
+.upgrade-action {
+  display: flex;
+  justify-content: flex-end; 
+  margin-top: auto;          
+}
+
+/* ==========================
+   Wrapper voor koop knop (rechts onderin)
+   ========================== */
+.buy-action {
+  display: flex;
+  justify-content: flex-end; 
+  margin-top: auto;          
+}
+
+/* ==========================
+   Knoppenrij onderaan (voor andere knoppen, niet inkomsten ophalen)
+   ========================== */
+   .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+  .buttons button {
+    padding: 10px 20px;
+    border-radius: 14px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    min-width: 140px;
+  }
+  
+  
+  .income-collect-container {
+    text-align: center;
+    margin-top: 24px; 
+    padding-bottom: 20px; 
+}
+
+  
+  #collectIncomeBtn {
+    background: linear-gradient(90deg, #f7931e, #ffb845); /* oranje-geel gradient */
+    color: #1a1a1a; 
+    border: none;
+    padding: 14px 30px;       
+    font-size: 1rem;          
+    font-weight: 700;
+    border-radius: 30px;
+    box-shadow: 0 4px 10px rgba(255, 184, 69, 0.5); 
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+    min-width: 160px;         
+    text-align: center;
+    outline-offset: 3px;
+  }
+  
+  #collectIncomeBtn:hover:not(:disabled) {
+    background: linear-gradient(90deg, #ffb845, #f7931e);
+    box-shadow: 0 6px 12px rgba(255, 144, 0, 0.7);  
+    transform: translateY(-2px);                     /* iets minder omhoog */
+  }
+  
+  #collectIncomeBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+    background: #b57f16;
+  }
+  
+  
+  /* sluitknop */
+  .container {
+    position: relative; 
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 28px;
+    line-height: 1;
+    color: #f0f0f0; 
+    cursor: pointer;
+    transition: color 0.2s ease;
+    user-select: none;
+    padding: 0;
+  }
+  
+  .close-btn:hover {
+    color: #ff4b2b; 
+  }
+  
+
+/* ==========================
+   Upgrade timer sectie
+   ========================== */
+   .upgrade-container {
+    margin-top: 14px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .upgrade-label {
+    font-size: 0.9rem;
+    color: #f9a825;
+    font-weight: 600;
+    user-select: none;
+  }
+  
+  /* Progress bar */
+  .upgrade-progressbar {
+    position: relative;
+    height: 14px;
+    border-radius: 10px;
+    background: #3a3a3a;
+    overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
+  }
+  
+  .upgrade-progressbar-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #f9a825, #ffee58);
+    transition: width 1s linear;
+    border-radius: 10px 0 0 10px;
+  }
+  
+  /* ==========================
+     Upgrade knop onder progress bar
+     ========================== */
+  .upgrade-action {
+    margin-top: 8px;
+    display: flex;
+    justify-content: flex-end;  
+    padding-right: 8px;         
+  }
+  
+  .upgrade-action .btn-upgrade {
+    padding: 5px 10px;          
+    font-size: 0.75rem;         
+    min-width: 70px;           
+    background: #1c1c1c;        
+    color: #ffa726;
+    border: 1.5px solid #ffa726;
+    border-radius: 8px;
+    box-shadow: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    user-select: none;
+  }
+  .upgrade-action .btn-upgrade:hover:not(:disabled) {
+    background: #262626;
+    border-color: #ffb74d;
+    color: #ffb74d;
+    transform: translateY(-1.5px);
+  }
+  
+  /* ==========================
+     Business card positie & badge
+     ========================== */
+  .business-card {
+    position: relative;
+  }
+  
+  /* Gekocht-badge */
+  .owned-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    user-select: none;
+    pointer-events: none;
+    opacity: 0.95;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+  
+  /* Tabs container */
+  .tabs {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+  
+  /* Individuele tab */
+  .tab {
+    background: #292929;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 14px;
+    color: #ccc;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease;
+    user-select: none;
+  }
+  
+  /* Hover effect */
+  .tab:hover:not(.active) {
+    background: #383838;
+    color: #ff4b2b;
+  }
+  
+  /* Actieve tab */
+  .tab.active {
+    background: #1c1c1c;
+    color: #ff4b2b;
+    font-weight: 700;
+  }
+  
+  
+  .tab:focus {
+    outline: none;
+    box-shadow: none;
+  }
+  
+  .business-card {
+    position: relative;
+  }
+  
+  
+  .level-wrap {
+    position: absolute;
+    bottom: 10px;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: fadeInUp 0.6s ease;
+  }
+  
+  
+  .level-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #f4c430;
+    font-family: 'Space Grotesk', sans-serif;
+    text-shadow: 0 0 4px rgba(0,0,0,0.6);
+    letter-spacing: 0.5px;
+    opacity: 0.85;
+  }
+  
+  
+  .level-indicator {
+    display: flex;
+    gap: 6px;
+  }
+  
+  
+  .level-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #444;
+    opacity: 0.3;
+    transition: all 0.3s ease;
+    display: inline-block; /* Ensure it's treated as a block element */
+  }
+  
+
+  .level-dot.active {
+    background: #f7931e;
+    opacity: 1 !important; /* Force opacity */
+    box-shadow: 0 0 6px rgba(255, 160, 0, 0.85);
+    transform: scale(1.1); /* Slight grow effect */
+  }
+  
+  /* ✨ Fade-animatie */
+  @keyframes fadeInUp {
+    from {
+      transform: translateY(8px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }

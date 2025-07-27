@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Online Business</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div id="main">
+    <div class="container">
+      
+      <button id="closeBtn" type="button" aria-label="Sluit menu" class="close-btn">×</button>
+
+      <!-- Header sectie -->
+      <header class="header-section">
+        <h1>Start an online business</h1>
+        <p class="subheader">Can you expand it to a real succes? Start building your passive income now!
+       </p>
+      </header>
+
+      <!-- Tabs navigatie -->
+      <nav class="tabs" role="tablist" aria-label="Bedrijfstabs">
+        <button id="tab-owned" class="tab active" role="tab" aria-selected="true" aria-controls="businesses" tabindex="0">My companies</button>
+        <button id="tab-available" class="tab" role="tab" aria-selected="false" aria-controls="businesses" tabindex="-1">For sale</button>
+      </nav>
+
+      <!-- Business cards container -->
+      <section id="businesses" role="tabpanel" tabindex="0" aria-live="polite" aria-label="Lijst met bedrijven">
+        <!-- Dynamische bedrijfkaarten komen hier -->
+      </section>
+
+      <!-- Inkomsten ophalen knop -->
+      <div class="income-collect-container">
+        <button id="collectIncomeBtn" type="button">Claim profit</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+  <script>
+    const tabOwnedBtn = document.getElementById('tab-owned');
+    const tabAvailableBtn = document.getElementById('tab-available');
+
+    function switchTab(tab) {
+      currentTab = tab;
+
+      tabOwnedBtn.classList.toggle('active', tab === 'owned');
+      tabOwnedBtn.setAttribute('aria-selected', tab === 'owned');
+      tabOwnedBtn.tabIndex = tab === 'owned' ? 0 : -1;
+
+      tabAvailableBtn.classList.toggle('active', tab === 'available');
+      tabAvailableBtn.setAttribute('aria-selected', tab === 'available');
+      tabAvailableBtn.tabIndex = tab === 'available' ? 0 : -1;
+
+      if (typeof renderBusinesses === 'function') {
+        renderBusinesses(businesses);
+      }
+    }
+
+    tabOwnedBtn.addEventListener('click', () => switchTab('owned'));
+    tabAvailableBtn.addEventListener('click', () => switchTab('available'));
+  </script>
+</body>
+</html>
