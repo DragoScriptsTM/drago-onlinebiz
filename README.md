@@ -1,5 +1,9 @@
 # drago-onlinebiz
 
+## 📺 Preview Video
+
+[Click here to watch the showcase on YouTube](https://youtu.be/0xqAR7nB9NY)
+
 A **free** and modern FiveM script that lets players buy, upgrade, and manage online (virtual) businesses to earn passive income.
 
 ## 💡 Features
